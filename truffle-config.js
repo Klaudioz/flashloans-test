@@ -65,7 +65,7 @@ module.exports = {
         process.env.PRIVATE_KEY, 
         process.env.INFURA_URL
       ),
-      network_id: 1,       //mainnet 
+      network_id: 1,       //mainnet,
     },
 
     // Useful for private networks

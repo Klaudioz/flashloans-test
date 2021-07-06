@@ -33,7 +33,7 @@ const init = async () => {
   )));
   const daiWeth = await Pair.fetchData(
     dai,
-    weth
+    weth,
   );
 
   web3.eth.subscribe('newBlockHeaders')

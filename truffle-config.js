@@ -1,5 +1,7 @@
 require('dotenv').config();
 const HDWalletProvider = require('@truffle/hdwallet-provider');
+console.log(process.env.INFURA_URL_KOVAN);
+console.log(process.env.PRIVATE_KEY);
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -59,13 +61,28 @@ module.exports = {
       // from: <address>,        // Account to send txs from (default: accounts[0])
       // websockets: true        // Enable EventEmitter interface for web3 (default: false)
     // },
+    kovan: {
+      provider: () => new HDWalletProvider(
+        process.env.PRIVATE_KEY, 
+        process.env.INFURA_URL_KOVAN
+      ),
+      network_id: 42,
+    },
+
 
     mainnet: {
       provider: () => new HDWalletProvider(
         process.env.PRIVATE_KEY, 
-        process.env.INFURA_URL
+        process.env.INFURA_URL_MAINNET
       ),
-      network_id: 1,       //mainnet,
+      network_id: 1,       //mainnet 
+    },
+
+    mainnetFork: {
+      host: "127.0.0.1",     // Localhost (default: none)
+      port: 8545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
+      skipDryRun: true
     },
 
     // Useful for private networks
